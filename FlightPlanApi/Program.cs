@@ -1,4 +1,6 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using FlightPlanApi.Data;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -8,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Add CORS service to the application
 builder.Services.AddCors();
+builder.Services.AddScoped<IDatabaseAdapter, MongoDBdatabase>();
 
 var app = builder.Build();
 
